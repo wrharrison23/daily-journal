@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"
         <title>Daily Journal - Wesley Harrison</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <link rel="stylesheet" href="./styles/main.css">
     </head>
 
@@ -10,33 +12,34 @@
         <header>
             <section>
                 <img src="" alt="">
-                <h1>Daily Journal</h1>
-                <h2>Wesley Harrison</h2>
+                <h1>Daily Journal 
+                    <small class="text-muted">Wesley Harrison</small>
+                </h1>
             </section>
         </header>
 
         <main id="container">
 
-                <h2>Daily Journal</h2>
                 <form action="">
-                    <fieldset>
+                    <fieldset class="mb-3">
                         <label for="journalDate">Date of entry</label>
-                        <input type="date" name="journalDate" id="journalDate">
+                        <input type="date" class="form-control">
                     </fieldset>
 
-                    <fieldset>
+                    <fieldset class="mb-3">
                         <label for="concepts">Concepts Covered</label>
-                        <input type="text" name="concepts" id="concepts">
+                        <input type="text" class="form-control form-control-sm" aria-label=".form-control-sm example">
                     </fieldset>
 
-                    <fieldset id = "entrySet">
+                    <fieldset class="mb-3">
                         <label for="journalEntry" id='entryLabel'>Journal Entry</label>
-                        <textarea rows = '10' name="journalEntry" id="journalEntry" cols="30" rows="10"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </fieldset>
 
-                    <fieldset>
-                        <label for="mood">Mood for the day</label>
-                        <select id="mood" name="mood" size="1">
+                    <fieldset class="mb-3">
+                        <label for="mood" class="form-control">Mood for the day</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select mood</option>
                             <option value="Happy">Happy</option>
                             <option value="Sad">Sad</option>
                             <option value="Motivated">Motivated</option>
@@ -45,11 +48,16 @@
                         </select>
                     </fieldset>
 
-                    <fieldset id="button">
+                    <fieldset class="mb-3">
                         <button>Record Journal Entry</button>
                     </fieldset>
                 </form>
              
+                <section class="journal-entry-container">
+                    <h2>Journal Entries</h2>
+                    <div class="entry">Journal entry here</div>
+
+                </section>
         </main>
 
         <footer>
@@ -60,5 +68,6 @@
         </footer>
 
         <script type="module" src="./scripts/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>
