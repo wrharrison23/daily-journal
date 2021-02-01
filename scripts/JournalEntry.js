@@ -6,13 +6,13 @@ export const JournalEntryComponent = (entry) => {
     return `
         <section id="entry--${entry.id}" class="journalEntry">
             <div class="entry-date">
-            ${entry.date}</div>
+            <strong>Date: </strong>${entry.date}</div>
             <div class="entry-concept">
-            ${entry.concept}</div>
+            <strong>Concept Covered: </strong>${entry.concept}</div>
             <div class="entry-text">
-            ${entry.entry}</div>
+            <strong>Journal Entry: </strong>${entry.entry}</div>
             <div class="entry-mood">
-            ${entry.mood}</div>
+            <strong>Mood: </strong>${entry.mood}</div>
         </section>
-    `
+    `;
 }
