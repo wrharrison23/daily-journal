@@ -12,7 +12,7 @@ export const JournalEntryComponent = (entry) => {
             <div class="entry-text">
             <strong>Journal Entry: </strong>${entry.entry}</div>
             <div class="entry-mood">
-            <strong>Mood: </strong>${entry.mood}</div>
+            <strong>Mood: </strong>${entry.mood.label}</div>
         </section>
     `;
 }

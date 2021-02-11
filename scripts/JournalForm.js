@@ -1,4 +1,4 @@
-import {saveJournalEntry} from "./JournalDataProvider.js"
+import {getMoods, saveJournalEntry, useMoods} from "./JournalDataProvider.js"
 import { EntryListComponent } from "./JournalEntryList.js"
 
 
@@ -10,7 +10,9 @@ const formHTML = document.querySelector("#formEntry")
 
 
 const showForm =() => {
-  formHTML.innerHTML = `<form action="">
+    getMoods().then(() => {
+        let moods = useMoods()
+        formHTML.innerHTML = `<div>
                     <fieldset class="mb-3">
                         <label for="journalDate">Date of entry</label>
                         <input type="date" class="form-control" id="dateEntered">
@@ -30,36 +32,37 @@ const showForm =() => {
                         <label for="mood" class="form-control">Mood for the day</label>
                         <select class="form-select" aria-label="Default select example" id="moodEntered">
                             <option selected>Select mood</option>
-                            <option value="Happy">Happy</option>
-                            <option value="Sad">Sad</option>
-                            <option value="Motivated">Motivated</option>
-                            <option value="Drained">Drained</option>
-                            <option value="Content">Content</option>
+                            ${moods.map((mood) => {
+                            return `<option value="${mood.id}">${mood.label}</option>`}).join("")}
                         </select>
                     </fieldset>
 
                     <fieldset class="mb-3">
                         <button id="recordEntryBtn">Record Journal Entry</button>
                     </fieldset>
-                </form>`
+                </div>`;
+
+    })   
 }
 
 document.querySelector("main").addEventListener("click", (clickEvent) => {
     if (clickEvent.target.id === "recordEntryBtn") {
-        let newDate = document.getElementById("dateEntered").value;
-        let newConcept = document.getElementById("conceptEntered").value;
-        let newEntry = document.getElementById("exampleFormControlTextarea1")
-          .value;
-        let newMood = document.getElementById("moodEntered").value;
+        let newDate = document.getElementById("dateEntered")
+        let newConcept = document.getElementById("conceptEntered")
+        let newEntry = document.getElementById("exampleFormControlTextarea1")  
+        let newMood = document.getElementById("moodEntered")
 
         const newJournalEntry = {
-          date: newDate,
-          concept: newConcept,
-          entry: newEntry,
-          mood: newMood,
+          date: newDate.value,
+          concept: newConcept.value,
+          entry: newEntry.value,
+          moodId: newMood.value,
         };
         // debugger
         saveJournalEntry(newJournalEntry)
     }
   
 });
+
+
+
