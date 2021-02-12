@@ -53,3 +53,9 @@ export const saveJournalEntry = (newJournalEntry) => {
     })
       .then(EntryListComponent()) // <-- Broadcast the state change event
 }
+
+export const deleteEntry = (entryId) => {
+  return fetch(`http://localhost:8088/entries/${entryId}`, {
+    method: "DELETE",
+  });
+};

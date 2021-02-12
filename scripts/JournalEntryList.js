@@ -4,7 +4,7 @@
  *    there are items in the collection exposed by the
  *    data provider component
  */
-import { useJournalEntries, getEntries } from "./JournalDataProvider.js";
+import { useJournalEntries, getEntries, deleteEntry } from "./JournalDataProvider.js";
 import { JournalEntryComponent } from "./JournalEntry.js"
 // DOM reference to where all entries will be rendered
 getEntries()
@@ -32,3 +32,13 @@ export const EntryListComponent = (entryArray) => {
     });
   } 
 }
+
+
+
+entryLog.addEventListener("click", (e) => {
+  if (e.target.id.startsWith("deleteEntry")) {
+    const idToDelete = e.target.id.slice(12);
+    deleteEntry(idToDelete);
+    getEntries().then(EntryListComponent);
+  }
+});
